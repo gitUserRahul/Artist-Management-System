@@ -3,17 +3,13 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useHoverDirty } from "react-use";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
-
-import AdminSidebar from "./../components/AdminSidebar";
-import AdminHeader from "./../components/AdminHeader";
-import AdminFooter from "./../components/AdminFooter";
-
-export default function AdminRouting() {
+import AdminSidebar from "../components/AdminSidebar";
+import AdminFooter from "../components/AdminFooter";
+export default function AdminLayout() {
   const token = localStorage.getItem("token");
   const [isAsideExpand, setIsAsideExpand] = useState(false);
   const ref = useRef(null);
   const isHovering = useHoverDirty(ref);
-
   return token ? (
     <section className="relative h-screen">
       <header
@@ -26,7 +22,6 @@ export default function AdminRouting() {
         <button type="button" onClick={() => setIsAsideExpand(!isAsideExpand)}>
           {isAsideExpand && !isHovering ? <FaTimes /> : <FaBarsStaggered />}
         </button>
-        <AdminHeader />
       </header>
       <aside
         ref={ref}
@@ -34,7 +29,7 @@ export default function AdminRouting() {
           isAsideExpand && !isHovering ? "w-[70px]" : "w-[275px]"
         }`}
       >
-        <AdminSidebar />
+        <AdminSidebar isAsideExpand={isAsideExpand} isHovering={isHovering} />
       </aside>
       <main
         className={`py-10 px-12 absolute z-10 top-[50px] left-0 min-h-[calc(100%+200px)] bg-[#f5f6fa] transition-all ease-in-out ${

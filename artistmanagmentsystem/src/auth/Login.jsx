@@ -33,7 +33,6 @@ export default function LoginPage() {
     setSubmitting(true);
     handleError();
     if (formData.email != null && formData.password != null) {
-      console.log(formData);
 
       HttpClient.post("/auth/login", { body: formData })
         .then((data) => {
@@ -51,6 +50,7 @@ export default function LoginPage() {
         .catch((err) => {
           setSubmitting(false);
           notify.showError(err.response.data.msg);
+          console.log(err)
         });
     } else {
       setSubmitting(false);

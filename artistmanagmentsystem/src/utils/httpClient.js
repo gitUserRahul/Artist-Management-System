@@ -1,6 +1,5 @@
 import publicHttpClient from "./publicHttpClient";
 import protectedHttpClient from "./protectedHttpClient";
-
 export const get = (
 	url,
 	{ headers = {}, params = {}, responseType = "json" } = {},
@@ -20,7 +19,6 @@ export const get = (
 				responseType,
 		  });
 };
-
 export const post = (
 	url,
 	{ headers = {}, body = {}, params = {}, responseType = "json" } = {},
@@ -42,7 +40,6 @@ export const post = (
 				data: body,
 		  });
 };
-
 export const put = (
 	url,
 	{ headers = {}, body = {}, params = {}, responseType = "json" } = {},
@@ -64,7 +61,6 @@ export const put = (
 				data: body,
 		  });
 };
-
 export const remove = (
 	url,
 	{ headers = {}, params = {}, responseType = "json" } = {},
